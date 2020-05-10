@@ -53,19 +53,19 @@
                         return error();
                 }
                 function win(){
-                    //return `You win! ${playerSelectionCapitalized} beats ${computerSelection}`
+                    console.log(`You win! ${playerSelectionCapitalized} beats ${computerSelection}`);
                     return true
                 }
                 function lose(){
-                    //return `You lose! ${computerSelection} beats ${playerSelectionCapitalized}`
+                    console.log(`You lose! ${computerSelection} beats ${playerSelectionCapitalized}`);
                     return false
                 }
                 function tie(){
-                    //return "tie"
+                    console.log('Its a tie! Your oponent also chose ' + computerSelection)
                     return undefined
                 }
                 function error(){
-                    //return "The selection is neither Rock, Paper or Scissors!"
+                    console.error("The selection is neither Rock, Paper or Scissors!");
                     return undefined
                 }
             }
