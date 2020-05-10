@@ -53,22 +53,46 @@
                         return error();
                 }
                 function win(){
-                    return `You win! ${playerSelectionCapitalized} beats ${computerSelection}`
+                    //return `You win! ${playerSelectionCapitalized} beats ${computerSelection}`
+                    return true
                 }
                 function lose(){
-                    return `You lose! ${computerSelection} beats ${playerSelectionCapitalized}`
+                    //return `You lose! ${computerSelection} beats ${playerSelectionCapitalized}`
+                    return false
                 }
                 function tie(){
-                    return "It's a tie!"
+                    //return "tie"
+                    return undefined
                 }
                 function error(){
-                    return "The selection is neither Rock, Paper or Scissors!"
+                    //return "The selection is neither Rock, Paper or Scissors!"
+                    return undefined
                 }
             }
 
-            const playerSelection = 'rock'
-            const computerSelection = computerPlay()
-            console.log(playRound(playerSelection, computerSelection))
+
+            function game(){
+                let totalWins = 0;
+                let totalLosses = 0;
+                let totalTies = 0;
+                for(i=1;i<=5;i++){
+                    playerSelection = prompt("Rock, Paper or Scissors?");
+                    play = playRound(playerSelection,computerPlay());
+                    if (play) {
+                        totalWins++
+                    } else if (play === undefined) {
+                        totalTies ++;
+                    } else {
+                        totalLosses ++;
+                    }
+                }
+                if (totalWins > totalLosses)  {
+                    return `Winner! You won ${totalWins} rounds!`
+                } else {
+                    return `You lose. You lost ${totalLosses} rounds. Better luck next time.`;
+                }
+            }
+            console.log(game());
         </script>
     </body>
 </html>
