@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            function computerPlay(){
+                let ran = Math.random();
+                return (ran < 1/3) ? "Rock" : 
+                       (ran < 2/3) ? "Paper" : "Scissors";
+            }
+            function playRound(playerSelection,computerSelection) {
+                if (typeof(playerSelection) !== "string"){
+                    console.error("playerSelection is undefined");
+                }
+                let playerSelectionCapitalized = playerSelection.toUpperCase()[0] + playerSelection.toLowerCase().slice(1);
+                switch(computerSelection){
+                    case "Rock":
+                            switch(playerSelectionCapitalized){
+                                case "Rock":
+                                    return tie();
+                                case "Paper":
+                                    return win();
+                                case "Scissors":
+                                    return lose();
+                                default:
+                                    return error();
+                            }
+                    case "Paper":
+                            switch(playerSelectionCapitalized){
+                                case "Rock":
+                                    return lose();
+                                case "Paper":
+                                    return tie();
+                                case "Scissors":
+                                    return win();
+                                default:
+                                    return error();
+                            }
+                    case "Scissors":
+                            switch(playerSelectionCapitalized){
+                                case "Rock":
+                                    return win();
+                                case "Paper":
+                                    return lose();
+                                case "Scissors":
+                                    return tie();
+                                default:
+                                    return error();
+                            }
+                    default:
+                        return error();
+                }
+                function win(){
+                    return `You win! ${playerSelectionCapitalized} beats ${computerSelection}`
+                }
+                function lose(){
+                    return `You lose! ${computerSelection} beats ${playerSelectionCapitalized}`
+                }
+                function tie(){
+                    return "It's a tie!"
+                }
+                function error(){
+                    return "The selection is neither Rock, Paper or Scissors!"
+                }
+            }
+
+            const playerSelection = 'rock'
+            const computerSelection = computerPlay()
+            console.log(playRound(playerSelection, computerSelection))
+        </script>
+    </body>
+</html>
